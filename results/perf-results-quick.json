@@ -1,5 +1,5 @@
 {
-  "startedAt": "2026-10-12T06:50:55.269Z",
+  "startedAt": "2026-10-24T18:28:11.969Z",
   "node": "v24.19.0",
   "cores": 16,
   "slo": {
@@ -19,26 +19,26 @@
       "students": 50,
       "startStormMs": {
         "n": 50,
-        "min": 15.8,
-        "p50": 23.7,
-        "p90": 30.4,
-        "p95": 31.3,
-        "p99": 32.1,
-        "max": 32.1,
-        "mean": 24.2
+        "min": 48.3,
+        "p50": 82.6,
+        "p90": 103.5,
+        "p95": 107.8,
+        "p99": 110.6,
+        "max": 110.6,
+        "mean": 82
       },
       "submitMs": {
         "n": 50,
-        "min": 8.5,
-        "p50": 24.2,
-        "p90": 31.8,
-        "p95": 33,
-        "p99": 33.6,
-        "max": 33.6,
-        "mean": 23.2
+        "min": 11,
+        "p50": 38.6,
+        "p90": 63.2,
+        "p95": 65.9,
+        "p99": 67.9,
+        "max": 67.9,
+        "mean": 39.3
       },
-      "wallMs": 36,
-      "submitsPerSec": 1371,
+      "wallMs": 72,
+      "submitsPerSec": 690,
       "errors": 0,
       "correct": 50,
       "winners": 50,
@@ -57,26 +57,26 @@
       "students": 100,
       "startStormMs": {
         "n": 100,
-        "min": 25.1,
-        "p50": 38.3,
-        "p90": 51.4,
-        "p95": 53,
-        "p99": 54,
-        "max": 54.4,
-        "mean": 38.8
+        "min": 80.1,
+        "p50": 122.3,
+        "p90": 161.9,
+        "p95": 167.3,
+        "p99": 170.4,
+        "max": 171.5,
+        "mean": 122.8
       },
       "submitMs": {
         "n": 100,
-        "min": 7.7,
-        "p50": 38.7,
-        "p90": 56.2,
-        "p95": 57.8,
-        "p99": 59.5,
-        "max": 59.7,
-        "mean": 36.5
+        "min": 15,
+        "p50": 59.2,
+        "p90": 105.6,
+        "p95": 109.8,
+        "p99": 114.3,
+        "max": 115.4,
+        "mean": 62.6
       },
-      "wallMs": 64,
-      "submitsPerSec": 1572,
+      "wallMs": 124,
+      "submitsPerSec": 809,
       "errors": 0,
       "correct": 100,
       "winners": 100,
@@ -96,15 +96,15 @@
       "requests": 300,
       "submitMs": {
         "n": 300,
-        "min": 52.1,
-        "p50": 69.6,
-        "p90": 72.5,
-        "p95": 75,
-        "p99": 76.5,
-        "max": 76.6,
-        "mean": 65.7
+        "min": 123.8,
+        "p50": 184.7,
+        "p90": 244.6,
+        "p95": 249.6,
+        "p99": 255.7,
+        "max": 257.1,
+        "mean": 183.6
       },
-      "wallMs": 95,
+      "wallMs": 281,
       "exactlyOne": 100,
       "consistent": 100,
       "db": {
@@ -120,16 +120,16 @@
     {
       "scenario": "CLIFF-100",
       "students": 100,
-      "deadlineSpreadMs": 19,
+      "deadlineSpreadMs": 70,
       "deadlineToResultMs": {
         "n": 100,
-        "min": 18,
-        "p50": 82,
-        "p90": 120,
-        "p95": 123,
-        "p99": 128,
-        "max": 132,
-        "mean": 80
+        "min": 3,
+        "p50": 47,
+        "p90": 64,
+        "p95": 67,
+        "p99": 71,
+        "max": 72,
+        "mean": 41.9
       },
       "lateBeyondGrace": 0,
       "correct": 100,
@@ -146,16 +146,16 @@
     {
       "scenario": "SWEEP-100",
       "students": 100,
-      "completeAfterGraceMs": 325,
+      "completeAfterGraceMs": 918,
       "healthProbeMs": {
-        "n": 117,
-        "min": 0.6,
-        "p50": 1.6,
-        "p90": 2.1,
-        "p95": 2.2,
-        "p99": 2.6,
-        "max": 12.7,
-        "mean": 1.7
+        "n": 130,
+        "min": 1.3,
+        "p50": 1.9,
+        "p90": 2.4,
+        "p95": 2.6,
+        "p99": 3.2,
+        "max": 3.3,
+        "mean": 2
       },
       "correct": 100,
       "db": {
@@ -172,17 +172,17 @@
       "scenario": "SOAK-50x8s",
       "students": 50,
       "durationSec": 8,
-      "requests": 447,
+      "requests": 442,
       "reqPerSec": 49,
       "autosaveMs": {
-        "n": 397,
-        "min": 1,
-        "p50": 1.9,
-        "p90": 3,
-        "p95": 3.5,
-        "p99": 5.4,
-        "max": 12.7,
-        "mean": 2.1
+        "n": 392,
+        "min": 1.1,
+        "p50": 2.2,
+        "p90": 2.8,
+        "p95": 3.2,
+        "p99": 4.2,
+        "max": 12,
+        "mean": 2.3
       },
       "correct": 50,
       "serverCpuPct": 0,
@@ -191,7 +191,8 @@
     }
   ],
   "serverLogTail": [
-    "exam-engine listening on http://localhost:3300 (db=C:\\Users\\jamad\\Downloads\\online-exam-engine\\online-exam-engine\\.tmp\\perf.db, grace=2000ms)",
+    "[auth] Default admin created: admin / admin123",
+    "exam-engine listening on http://localhost:3300 (db=C:\\Users\\jamad\\Downloads\\online-exam-engine\\.tmp\\perf.db, grace=2000ms)",
     ""
   ],
   "verdicts": [
@@ -223,13 +224,13 @@
       "scenario": "SPIKE-50",
       "name": "submit p95 <= 1000 ms",
       "pass": true,
-      "detail": "33 ms"
+      "detail": "65.9 ms"
     },
     {
       "scenario": "SPIKE-50",
       "name": "submit p99 <= 2000 ms",
       "pass": true,
-      "detail": "33.6 ms"
+      "detail": "67.9 ms"
     },
     {
       "scenario": "SPIKE-100",
@@ -259,13 +260,13 @@
       "scenario": "SPIKE-100",
       "name": "submit p95 <= 1000 ms",
       "pass": true,
-      "detail": "57.8 ms"
+      "detail": "109.8 ms"
     },
     {
       "scenario": "SPIKE-100",
       "name": "submit p99 <= 2000 ms",
       "pass": true,
-      "detail": "59.5 ms"
+      "detail": "114.3 ms"
     },
     {
       "scenario": "DUP-100",
@@ -295,7 +296,7 @@
       "scenario": "DUP-100",
       "name": "submit p95 <= 1000 ms",
       "pass": true,
-      "detail": "75 ms"
+      "detail": "249.6 ms"
     },
     {
       "scenario": "CLIFF-100",
@@ -319,7 +320,7 @@
       "scenario": "CLIFF-100",
       "name": "deadline -> result p95 <= 1500 ms",
       "pass": true,
-      "detail": "123 ms"
+      "detail": "67 ms"
     },
     {
       "scenario": "CLIFF-100",
@@ -331,7 +332,7 @@
       "scenario": "SWEEP-100",
       "name": "all 100 attempts closed within 5000 ms of the grace window ending",
       "pass": true,
-      "detail": "325 ms"
+      "detail": "918 ms"
     },
     {
       "scenario": "SWEEP-100",
@@ -349,13 +350,13 @@
       "scenario": "SWEEP-100",
       "name": "longest stall seen by other users <= 250 ms",
       "pass": true,
-      "detail": "12.7 ms"
+      "detail": "3.3 ms"
     },
     {
       "scenario": "SOAK-50x8s",
       "name": "no failed requests",
       "pass": true,
-      "detail": "0 of 447"
+      "detail": "0 of 442"
     },
     {
       "scenario": "SOAK-50x8s",
@@ -367,7 +368,7 @@
       "scenario": "SOAK-50x8s",
       "name": "autosave p95 <= 250 ms",
       "pass": true,
-      "detail": "3.5 ms"
+      "detail": "3.2 ms"
     }
   ],
   "passed": 29,
