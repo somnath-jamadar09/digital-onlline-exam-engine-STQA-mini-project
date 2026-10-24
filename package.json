@@ -1,14 +1,25 @@
 {
-  "name": "online-exam-engine-workspace",
+  "name": "online-exam-engine",
   "version": "1.0.0",
-  "private": true,
+  "description": "Online examination & automated evaluation engine with timed tests, immediate results, and an STQA test suite",
+  "main": "server/index.js",
   "scripts": {
-    "start": "npm --prefix online-exam-engine run start",
-    "dev": "npm --prefix online-exam-engine run start",
-    "test:api": "npm --prefix online-exam-engine run test:api",
-    "test:ui": "npm --prefix online-exam-engine run test:ui",
-    "test:perf": "npm --prefix online-exam-engine run test:perf",
-    "test:perf:quick": "npm --prefix online-exam-engine run test:perf:quick",
-    "test": "npm --prefix online-exam-engine test"
+    "start": "node server/index.js",
+    "dev": "node server/index.js",
+    "test:api": "node --test --test-reporter=spec --test-reporter-destination=stdout --test-reporter=junit --test-reporter-destination=results/api-junit.xml \"tests/api/*.test.js\"",
+    "test:ui": "playwright test",
+    "test:perf": "node tests/perf/load-test.js",
+    "test:perf:quick": "node tests/perf/load-test.js --quick",
+    "test": "npm run test:api && npm run test:ui"
+  },
+  "dependencies": {
+    "express": "^5.3.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.64.0"
+  },
+  "private": true,
+  "engines": {
+    "node": ">=22.13"
   }
 }
