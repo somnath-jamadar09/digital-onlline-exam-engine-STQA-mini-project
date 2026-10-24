@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Online Examination & Evaluation Engine — secure, server-timed exams with real-time autosave and instant results.">
+  <title>Online Examination &amp; Evaluation Engine</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-state="login">
+
+  <!-- ================ MAIN APP ================ -->
+  <div id="main-app">
+
+    <header class="bar">
+      <div class="brand-section">
+        <div class="logo-badge">⚡</div>
+        <h1 id="exam-title">Online Examination</h1>
+        <nav class="nav-tabs" aria-label="Portal Navigation">
+          <button id="tab-student" class="tab-btn active">🎓 Student Portal</button>
+          <button id="tab-admin" class="tab-btn" id="tab-admin-btn">📊 Admin Dashboard</button>
+        </nav>
+      </div>
+
+      <div class="status">
+        <div class="timer-container">
+          <span class="timer-icon">⏱</span>
+          <span id="timer" data-testid="timer" data-remaining-ms="" class="timer" aria-live="off">--:--</span>
+        </div>
+        <span id="save-status" data-testid="save-status" class="pill">&nbsp;</span>
+        <span id="net-status" data-testid="net-status" data-online="true" class="pill ok">Online</span>
+        <div class="user-menu">
+          <div class="user-avatar" id="user-avatar-btn" title="Account">
+            <span id="user-initial">?</span>
+          </div>
+          <div class="user-dropdown" id="user-dropdown" hidden>
+            <div class="user-info">
+              <strong id="dd-username"></strong>
+              <span id="dd-role" class="role-badge"></span>
+            </div>
+            <hr class="dd-divider">
+            <button type="button" id="logout-btn" class="dd-item">🚪 Sign Out</button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- ================= STUDENT VIEW ================= -->
+      <div id="student-view">
+        <div class="exam-picker-bar">
+          <span>Active Exam:</span>
+          <select id="exam-select-dropdown" aria-label="Select Exam"></select>
+        </div>
+
+        <!-- Login / Sign-in Section -->
+        <section id="login" class="card">
+          <h2>Student Examination Entry</h2>
+          <p class="muted">Enter your registered Student ID to start or resume your exam attempt. Deadlines and answers are preserved continuously across reloads or network interruptions.</p>
+
+          <div class="exam-info-banner">
+            <div class="info-item">
+              <span class="info-label">Exam Title</span>
+              <span id="login-exam-title" class="info-val">Loading…</span>
+            </div>
+            <div class="info-item">
+              <span class="info-label">Duration</span>
+              <span id="login-exam-duration" class="info-val">--</span>
+            </div>
+            <div class="info-item">
+              <span class="info-label">Authority</span>
+              <span class="info-val">Server Clock</span>
+            </div>
+          </div>
+
+          <label for="student-id">Student ID</label>
+          <input id="student-id" data-testid="student-id" autocomplete="off" maxlength="64" placeholder="e.g. S2026001 or STUDENT-1">
+
+          <button id="start-btn" data-testid="start-btn" class="primary">▶ Start Exam</button>
+          <p id="login-error" class="error" role="alert"></p>
+
+          <div class="resume-hint">
+            <span>🔄</span>
+            <span><strong>Resume Guarantee:</strong> If you lose connection or close the browser, signing back in with the same Student ID restores your attempt with the exact server deadline and cached answers.</span>
+          </div>
+        </section>
+
+        <!-- Exam Active Section -->
+        <section id="exam" class="card" hidden>
+          <div class="exam-hud-progress">
+            <span id="q-progress-text" class="progress-text">Answered 0 of 0</span>
+            <div class="progress-bar-bg">
+              <div id="q-progress-fill" class="progress-bar-fill"></div>
+            </div>
+          </div>
+
+          <form id="questions" onsubmit="return false"></form>
+
+          <div class="actions">
+            <button id="submit-btn" data-testid="submit-btn" class="primary">✔ Submit Exam</button>
+            <span id="submit-note" data-testid="submit-note" class="muted"></span>
+          </div>
+        </section>
+
+        <!-- Result Section -->
+        <section id="result" class="card" data-testid="result" hidden>
+          <div class="result-hero">
+            <div class="result-badge">🎯</div>
+            <h2>Examination Completed</h2>
+            <p class="big"><span id="result-score" data-testid="result-score"></span></p>
+            <p id="result-meta" data-testid="result-meta" class="muted"></p>
+          </div>
+
+          <h3>Question Breakdown</h3>
+          <ol id="result-breakdown"></ol>
+
+          <div class="actions" style="margin-top: 24px;">
+            <button id="restart-view-btn" data-testid="restart-view-btn" class="secondary">← Back to Portal</button>
+          </div>
+        </section>
+      </div>
+
+      <!-- ================= ADMIN VIEW ================= -->
+      <div id="admin-view" hidden>
+        <!-- Admin Basic Auth Card (displayed if locked) -->
+        <section id="admin-auth-card" class="card" style="max-width: 460px; margin: 40px auto; text-align: center;">
+          <div style="font-size: 40px; margin-bottom: 12px;">🔐</div>
+          <h2 style="margin-bottom: 6px;">Admin Authentication</h2>
+          <p class="muted" style="margin-bottom: 20px;">Enter basic admin credentials to access live exam analytics and management.</p>
+          <div class="form-group" style="text-align: left; margin-bottom: 14px;">
+            <label for="admin-auth-user">Username</label>
+            <input id="admin-auth-user" type="text" value="admin" autocomplete="username">
+          </div>
+          <div class="form-group" style="text-align: left; margin-bottom: 14px;">
+            <label for="admin-auth-pass">Password</label>
+            <input id="admin-auth-pass" type="password" value="admin123" autocomplete="current-password">
+          </div>
+          <p id="admin-auth-error" class="error" role="alert" style="margin-bottom: 14px; min-height: 1.2em;"></p>
+          <div style="display: flex; gap: 10px;">
+            <button id="admin-login-btn" type="button" class="primary" style="flex: 1; margin: 0;">Unlock Dashboard</button>
+            <button id="admin-demo-btn" type="button" class="secondary" style="margin: 0;" title="Fill default admin credentials">Demo Auto-Fill</button>
+          </div>
+          <p class="auth-hint" style="margin-top: 14px;">Default admin: <strong>admin</strong> / <strong>admin123</strong></p>
+        </section>
+
+        <!-- Admin Dashboard Content (displayed once unlocked) -->
+        <div id="admin-content" hidden>
+          <div class="admin-top-bar" style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 20px; background:var(--surface); padding:12px 20px; border-radius:var(--r); border:1px solid var(--border);">
+            <div><span class="user-role-badge admin">Admin Access Unlocked</span> <span class="muted" style="margin-left:8px;">Live performance monitoring, user accounts &amp; exam authoring</span></div>
+            <button id="admin-logout-btn" type="button" class="secondary" style="margin:0;">🔒 Lock Admin</button>
+          </div>
+
+          <!-- Class Totals & Metrics -->
+          <section class="card">
+          <div class="section-header">
+            <div>
+              <h2>Class Performance &amp; Totals</h2>
+              <span id="admin-active-exam-label" class="muted">Exam: demo</span>
+            </div>
+            <button id="admin-refresh-btn" class="secondary">🔄 Refresh Metrics</button>
+          </div>
+
+          <div class="admin-grid">
+            <div class="stat-card">
+              <div class="stat-label">Total Attempts</div>
+              <div id="stat-total" class="stat-val">0</div>
+              <div class="stat-sub">Registered students</div>
+            </div>
+            <div class="stat-card warn">
+              <div class="stat-label">In Progress</div>
+              <div id="stat-inprogress" class="stat-val">0</div>
+              <div class="stat-sub">Active countdown</div>
+            </div>
+            <div class="stat-card ok">
+              <div class="stat-label">Submitted</div>
+              <div id="stat-submitted" class="stat-val">0</div>
+              <div class="stat-sub">Manual submissions</div>
+            </div>
+            <div class="stat-card info">
+              <div class="stat-label">Auto-Submitted</div>
+              <div id="stat-auto-submitted" class="stat-val">0</div>
+              <div class="stat-sub">Timer expiry</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">Class Average</div>
+              <div id="stat-avg" class="stat-val">--</div>
+              <div id="stat-avg-sub" class="stat-sub">Out of total score</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">Score Range</div>
+              <div id="stat-range" class="stat-val">--</div>
+              <div id="stat-range-sub" class="stat-sub">Min to Max score</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- User Management -->
+        <section class="card">
+          <div class="section-header">
+            <div>
+              <h2>User Management</h2>
+              <span class="muted">Register and manage student & admin accounts</span>
+            </div>
+            <button id="add-user-toggle-btn" class="secondary">➕ Add User</button>
+          </div>
+
+          <!-- Add User Form (collapsible) -->
+          <div id="add-user-form" class="add-user-form" hidden>
+            <div class="form-row">
+              <div>
+                <label for="um-username">Username</label>
+                <input id="um-username" type="text" placeholder="e.g. student01" maxlength="40">
+              </div>
+              <div>
+                <label for="um-displayname">Display Name</label>
+                <input id="um-displayname" type="text" placeholder="e.g. John Smith" maxlength="60">
+              </div>
+            </div>
+            <div class="form-row">
+              <div>
+                <label for="um-password">Password</label>
+                <input id="um-password" type="password" placeholder="Min. 4 characters">
+              </div>
+              <div>
+                <label for="um-role">Role</label>
+                <select id="um-role" style="width:100%">
+                  <option value="student">Student</option>
+                  <option value="admin">Admin</option>
+                </select>
+              </div>
+            </div>
+            <p id="um-error" class="error"></p>
+            <div class="creator-actions">
+              <button id="um-create-btn" type="button" class="primary" style="margin-top:0">Create User</button>
+              <button id="um-cancel-btn" type="button" class="secondary">Cancel</button>
+            </div>
+            <div id="um-toast" class="toast"></div>
+          </div>
+
+          <!-- Users Table -->
+          <div class="users-table-wrap">
+            <table class="users-table" id="users-table">
+              <thead>
+                <tr>
+                  <th>Username</th>
+                  <th>Display Name</th>
+                  <th>Role</th>
+                  <th>Created</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="users-tbody">
+                <tr><td colspan="5" class="table-empty">Loading users…</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Exam Creator -->
+        <section class="card">
+          <h2>Create New Examination</h2>
+          <p class="muted">Configure exam title, time limit, and questions (Single Choice, Multiple Select, and Numeric with tolerance).</p>
+
+          <form id="create-exam-form" class="creator-form" onsubmit="return false">
+            <div class="form-row">
+              <div>
+                <label for="new-exam-id">Exam ID</label>
+                <input id="new-exam-id" placeholder="e.g. math-midterm" maxlength="40">
+              </div>
+              <div>
+                <label for="new-exam-title">Exam Title</label>
+                <input id="new-exam-title" placeholder="e.g. Mathematics Midterm Examination" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div>
+                <label for="new-exam-duration">Duration (Seconds)</label>
+                <input id="new-exam-duration" type="number" min="5" max="21600" value="120" required>
+              </div>
+              <div>
+                <label>Quick Presets</label>
+                <div style="display: flex; gap: 8px; margin-top: 4px;">
+                  <button type="button" class="secondary preset-btn" onclick="document.getElementById('new-exam-duration').value=60">1 Min</button>
+                  <button type="button" class="secondary preset-btn" onclick="document.getElementById('new-exam-duration').value=120">2 Min</button>
+                  <button type="button" class="secondary preset-btn" onclick="document.getElementById('new-exam-duration').value=300">5 Min</button>
+                  <button type="button" class="secondary preset-btn" onclick="document.getElementById('new-exam-duration').value=1800">30 Min</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="section-header" style="margin-top: 24px;">
+              <h3 style="margin:0">Questions</h3>
+              <button id="add-question-btn" type="button" class="secondary">➕ Add Question</button>
+            </div>
+
+            <div id="questions-builder-container"></div>
+
+            <div class="creator-actions">
+              <button id="create-exam-btn" type="button" class="primary">🚀 Publish Exam</button>
+            </div>
+
+            <div id="create-exam-toast" class="toast"></div>
+          </form>
+        </section>
+        </div><!-- /admin-content -->
+      </div>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,1035 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\jamad\\Downloads\\online-exam-engine\\online-exam-engine\\node_modules\\@playwright\\test\\cli.js",
+      "test"
+    ],
+    "configFile": "C:\\Users\\jamad\\Downloads\\online-exam-engine\\online-exam-engine\\playwright.config.js",
+    "rootDir": "C:/Users/jamad/Downloads/online-exam-engine/online-exam-engine/tests/ui",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 4
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/jamad/Downloads/online-exam-engine/online-exam-engine/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 4
+        },
+        "id": "",
+        "name": "",
+        "testDir": "C:/Users/jamad/Downloads/online-exam-engine/online-exam-engine/tests/ui",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\jamad\\Downloads\\online-exam-engine\\online-exam-engine\\test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 4
+        },
+        "name": "",
+        "testDir": "C:\\Users\\jamad\\Downloads\\online-exam-engine\\online-exam-engine\\tests\\ui",
+        "snapshotDir": "C:\\Users\\jamad\\Downloads\\online-exam-engine\\online-exam-engine\\tests\\ui",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 60000,
+        "use": {
+          "baseURL": "http://127.0.0.1:3200",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.8078.4 Safari/537.36",
+          "viewport": {
+            "width": 1280,
+            "height": 720
+          },
+          "screen": {
+            "width": 1920,
+            "height": 1080
+          },
+          "deviceScaleFactor": 1,
+          "isMobile": false,
+          "hasTouch": false,
+          "defaultBrowserType": "chromium"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "results/ui-results.json"
+        }
+      ],
+      [
+        "html",
+        {
+          "outputFolder": "results/ui-report",
+          "open": "never"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.0",
+    "workers": 4,
+    "webServer": {
+      "command": "node server/index.js",
+      "url": "http://127.0.0.1:3200/api/health",
+      "reuseExistingServer": false,
+      "timeout": 20000,
+      "env": {
+        "PORT": "3200",
+        "GRACE_MS": "1500",
+        "SWEEP_MS": "250",
+        "NODE_NO_WARNINGS": "1"
+      }
+    }
+  },
+  "suites": [
+    {
+      "title": "timer-sync.spec.js",
+      "file": "timer-sync.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Timer synchronicity",
+          "file": "timer-sync.spec.js",
+          "line": 19,
+          "column": 6,
+          "specs": [
+            {
+              "title": "UI-01: timer starts at the full duration and counts down monotonically",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "elapsed-over-3s-wait",
+                      "description": "3205 ms"
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 7753,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-12T09:47:45.672Z",
+                      "annotations": [
+                        {
+                          "type": "elapsed-over-3s-wait",
+                          "description": "3205 ms"
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "ece2b3e687d86444e3ca-5079c4055607a115014e",
+              "file": "timer-sync.spec.js",
+              "line": 20,
+              "column": 3
+            },
+            {
+              "title": "UI-02: no drift against the server clock over 15 seconds (sampled every 500 ms)",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "max-abs-drift-ms",
+                      "description": "192"
+                    },
+                    {
+                      "type": "mean-drift-ms",
+                      "description": "90"
+                    },
+                    {
+                      "type": "samples",
+                      "description": "30"
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 20533,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-12T09:47:45.640Z",
+                      "annotations": [
+                        {
+                          "type": "max-abs-drift-ms",
+                          "description": "192"
+                        },
+                        {
+                          "type": "mean-drift-ms",
+                          "description": "90"
+                        },
+                        {
+                          "type": "samples",
+                          "description": "30"
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "ece2b3e687d86444e3ca-cfce7e579ba576fff348",
+              "file": "timer-sync.spec.js",
+              "line": 41,
+              "column": 3
+            },
+            {
+              "title": "UI-03: reload mid-exam resumes from the server deadline, not from a fresh timer; answers restored",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "remaining-after-reload-ms",
+                      "description": "83847"
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 10778,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-12T09:47:45.645Z",
+                      "annotations": [
+                        {
+                          "type": "remaining-after-reload-ms",
+                          "description": "83847"
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "ece2b3e687d86444e3ca-dad632063acaa78acfb8",
+              "file": "timer-sync.spec.js",
+              "line": 60,
+              "column": 3
+            },
+            {
+              "title": "UI-04: student's system clock set +2 hours does not affect the timer",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "drift-ms",
+                      "description": "185"
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 7607,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-12T09:47:45.690Z",
+                      "annotations": [
+                        {
+                          "type": "drift-ms",
+                          "description": "185"
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "ece2b3e687d86444e3ca-792feba84bfa783fc5b4",
+              "file": "timer-sync.spec.js",
+              "line": 86,
+              "column": 5
+            },
+            {
+              "title": "UI-04: student's system clock set -3 hours does not affect the timer",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "drift-ms",
+                      "description": "70"
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 4389,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-12T09:47:53.519Z",
+                      "annotations": [
+                        {
+                          "type": "drift-ms",
+                          "description": "70"
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "ece2b3e687d86444e3ca-ebfe8aa662b998de70d1",
+              "file": "timer-sync.spec.js",
+              "line": 86,
+              "column": 5
+            },
+            {
+              "title": "UI-04: student's system clock set +10 years does not affect the timer",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "drift-ms",
+                      "description": "88"
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 4432,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-12T09:47:53.629Z",
+                      "annotations": [
+                        {
+                          "type": "drift-ms",
+                          "description": "88"
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "ece2b3e687d86444e3ca-5e2ae9fd304a8f710a2e",
+              "file": "timer-sync.spec.js",
+              "line": 86,
+              "column": 5
+            },
+            {
+              "title": "UI-05: timer stays accurate under 6x CPU throttling",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "drift-ms",
+                      "description": "-86"
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 12057,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-12T09:47:56.608Z",
+                      "annotations": [
+                        {
+                          "type": "drift-ms",
+                          "description": "-86"
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "ece2b3e687d86444e3ca-919075af301d25ff973d",
+              "file": "timer-sync.spec.js",
+              "line": 110,
+              "column": 3
+            },
+            {
+              "title": "UI-06: a 2.5 s frozen main thread (busy loop) does not make the timer lose time",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "drift-after-freeze-ms",
+                      "description": "116"
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 4410,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-12T09:47:57.924Z",
+                      "annotations": [
+                        {
+                          "type": "drift-after-freeze-ms",
+                          "description": "116"
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "ece2b3e687d86444e3ca-311576d1f8c3d059b745",
+              "file": "timer-sync.spec.js",
+              "line": 123,
+              "column": 3
+            },
+            {
+              "title": "UI-07: two tabs of the same student show the same timer and share one attempt",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "tab-difference-ms",
+                      "description": "107"
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 6509,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-12T09:47:58.084Z",
+                      "annotations": [
+                        {
+                          "type": "tab-difference-ms",
+                          "description": "107"
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "ece2b3e687d86444e3ca-b17d3de08d0b8a95d761",
+              "file": "timer-sync.spec.js",
+              "line": 136,
+              "column": 3
+            },
+            {
+              "title": "UI-08: 8 students starting together each track the server clock within tolerance",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "max-abs-drift-ms",
+                      "description": "181"
+                    },
+                    {
+                      "type": "students",
+                      "description": "8"
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 7549,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-12T09:48:02.351Z",
+                      "annotations": [
+                        {
+                          "type": "max-abs-drift-ms",
+                          "description": "181"
+                        },
+                        {
+                          "type": "students",
+                          "description": "8"
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "ece2b3e687d86444e3ca-cdc1415a2e5c14ddce31",
+              "file": "timer-sync.spec.js",
+              "line": 155,
+              "column": 3
+            },
+            {
+              "title": "UI-09: timer colour states change at 60 s and 10 s remaining",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 5237,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-12T09:48:04.623Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "ece2b3e687d86444e3ca-398b0c3a8e4f65471604",
+              "file": "timer-sync.spec.js",
+              "line": 174,
+              "column": 3
+            }
+          ]
+        },
+        {
+          "title": "Timer expiry in the browser",
+          "file": "timer-sync.spec.js",
+          "line": 183,
+          "column": 6,
+          "specs": [
+            {
+              "title": "UI-10: at 00:00 the exam is auto-submitted with the answers given, and the result appears immediately",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "time-to-result-ms",
+                      "description": "7163"
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 7507,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-12T09:48:06.364Z",
+                      "annotations": [
+                        {
+                          "type": "time-to-result-ms",
+                          "description": "7163"
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "ece2b3e687d86444e3ca-939d0512ef940a708f3d",
+              "file": "timer-sync.spec.js",
+              "line": 184,
+              "column": 3
+            },
+            {
+              "title": "UI-11: unanswered exam expiring still shows a 0 / 5 result (nothing hangs)",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 5315,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-12T09:48:08.685Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "ece2b3e687d86444e3ca-d6fd40e89bc285fa65eb",
+              "file": "timer-sync.spec.js",
+              "line": 209,
+              "column": 3
+            },
+            {
+              "title": "UI-12: double-clicking Submit sends one request and produces one result",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2244,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-12T09:48:09.884Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "ece2b3e687d86444e3ca-833d833e04514054dd7f",
+              "file": "timer-sync.spec.js",
+              "line": 216,
+              "column": 3
+            },
+            {
+              "title": "UI-13: re-opening the exam after it finished shows the result and no new timer",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 2845,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-12T09:48:09.941Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "ece2b3e687d86444e3ca-a8ef4ec3be7eb51a884a",
+              "file": "timer-sync.spec.js",
+              "line": 229,
+              "column": 3
+            }
+          ]
+        },
+        {
+          "title": "Network disconnects in the browser",
+          "file": "timer-sync.spec.js",
+          "line": 246,
+          "column": 6,
+          "specs": [
+            {
+              "title": "UI-14: going offline is shown; answers are kept and synced on reconnect",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2220,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-12T09:48:12.168Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "ece2b3e687d86444e3ca-d81ec20a73745b8dbf2b",
+              "file": "timer-sync.spec.js",
+              "line": 247,
+              "column": 3
+            },
+            {
+              "title": "UI-15: timer keeps running while offline and is correct on reconnect",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "drift-after-5s-offline-ms",
+                      "description": "113"
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 7708,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-12T09:48:12.810Z",
+                      "annotations": [
+                        {
+                          "type": "drift-after-5s-offline-ms",
+                          "description": "113"
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "ece2b3e687d86444e3ca-5c472a3a01607a535e2a",
+              "file": "timer-sync.spec.js",
+              "line": 269,
+              "column": 3
+            },
+            {
+              "title": "UI-16: answers that never reached the server survive a page reload (recovered from the device) and sync later",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 3432,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-12T09:48:13.905Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "ece2b3e687d86444e3ca-bf42c8510f9cf2393bd6",
+              "file": "timer-sync.spec.js",
+              "line": 285,
+              "column": 3
+            },
+            {
+              "title": "UI-17: clicking Submit while offline retries automatically and succeeds on reconnect",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 2605,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-12T09:48:14.029Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "ece2b3e687d86444e3ca-39363e3905a535311c1d",
+              "file": "timer-sync.spec.js",
+              "line": 311,
+              "column": 3
+            },
+            {
+              "title": "UI-18: offline answer made before the deadline, reconnect before the deadline: counted",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 13410,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-12T09:48:14.422Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "ece2b3e687d86444e3ca-61b4526b3e875ac51e71",
+              "file": "timer-sync.spec.js",
+              "line": 329,
+              "column": 3
+            },
+            {
+              "title": "UI-19: offline THROUGH the deadline + grace: server auto-submits what it had; late offline answers are not counted",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "business-rule",
+                      "description": "answers entered offline and not synced before deadline+grace are not counted"
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 13032,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-12T09:48:16.667Z",
+                      "annotations": [
+                        {
+                          "type": "business-rule",
+                          "description": "answers entered offline and not synced before deadline+grace are not counted"
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "ece2b3e687d86444e3ca-20a612ef43c87293a2c8",
+              "file": "timer-sync.spec.js",
+              "line": 341,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-12T09:47:44.440Z",
+    "duration": 45773.513,
+    "expected": 21,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

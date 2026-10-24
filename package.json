@@ -1,0 +1,14 @@
+{
+  "name": "online-exam-engine-workspace",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "npm --prefix online-exam-engine run start",
+    "dev": "npm --prefix online-exam-engine run start",
+    "test:api": "npm --prefix online-exam-engine run test:api",
+    "test:ui": "npm --prefix online-exam-engine run test:ui",
+    "test:perf": "npm --prefix online-exam-engine run test:perf",
+    "test:perf:quick": "npm --prefix online-exam-engine run test:perf:quick",
+    "test": "npm --prefix online-exam-engine test"
+  }
+}

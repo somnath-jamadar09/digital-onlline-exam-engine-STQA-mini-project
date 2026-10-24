@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<testsuites>
+	<testsuite name="Timer expiry" time="0.522490" disabled="0" errors="0" tests="12" failures="0" skipped="0" timestamp="2026-10-12T09:48:19.304Z" hostname="Somnath">
+		<testcase name="TE-01: submit exactly at the deadline is accepted as a normal submission" time="0.124950" classname="test" file="C:\Users\jamad\Downloads\online-exam-engine\online-exam-engine\tests\api\edge-cases.test.js"/>
+		<testcase name="TE-02: submit at deadline + grace (inclusive boundary) still counts the final answers" time="0.026298" classname="test" file="C:\Users\jamad\Downloads\online-exam-engine\online-exam-engine\tests\api\edge-cases.test.js"/>
+		<testcase name="TE-03: submit 1 ms after grace ignores late answers and grades the autosaved ones" time="0.032077" classname="test" file="C:\Users\jamad\Downloads\online-exam-engine\online-exam-engine\tests\api\edge-cases.test.js"/>
+		<testcase name="TE-04: autosave after expiry is rejected with 409 and cannot change the result" time="0.037334" classname="test" file="C:\Users\jamad\Downloads\online-exam-engine\online-exam-engine\tests\api\edge-cases.test.js"/>
+		<testcase name="TE-05: autosave inside the grace window is accepted" time="0.005747" classname="test" file="C:\Users\jamad\Downloads\online-exam-engine\online-exam-engine\tests\api\edge-cases.test.js"/>
+		<testcase name="TE-06: sweeper auto-submits an abandoned attempt (no client involved)" time="0.031674" classname="test" file="C:\Users\jamad\Downloads\online-exam-engine\online-exam-engine\tests\api\edge-cases.test.js"/>
+		<testcase name="TE-07: sweeper boundary: not expired at exactly deadline + grace, expired 1 ms later" time="0.020488" classname="test" file="C:\Users\jamad\Downloads\online-exam-engine\online-exam-engine\tests\api\edge-cases.test.js"/>
+		<testcase name="TE-08: re-opening an expired attempt shows the finished result, never a fresh timer" time="0.028128" classname="test" file="C:\Users\jamad\Downloads\online-exam-engine\online-exam-engine\tests\api\edge-cases.test.js"/>
+		<testcase name="TE-09: the deadline is immutable; re-start and refresh never extend it" time="0.035705" classname="test" file="C:\Users\jamad\Downloads\online-exam-engine\online-exam-engine\tests\api\edge-cases.test.js"/>
+		<testcase name="TE-10: client-supplied timestamps are ignored (client clock cannot move the deadline)" time="0.026073" classname="test" file="C:\Users\jamad\Downloads\online-exam-engine\online-exam-engine\tests\api\edge-cases.test.js"/>
+		<testcase name="TE-11: attempt that expires with zero answers still compiles a result (0 / max)" time="0.032555" classname="test" file="C:\Users\jamad\Downloads\online-exam-engine\online-exam-engine\tests\api\edge-cases.test.js"/>
+		<testcase name="TE-12: result of an unfinished attempt is withheld (409), then available after submit" time="0.060780" classname="test" file="C:\Users\jamad\Downloads\online-exam-engine\online-exam-engine\tests\api\edge-cases.test.js"/>
+	</testsuite>
+	<testsuite name="Network disconnects, retries and resume" time="0.557535" disabled="0" errors="0" tests="10" failures="0" skipped="0" timestamp="2026-10-12T09:48:19.833Z" hostname="Somnath">
+		<testcase name="ND-01: resume after a disconnect restores answers, seq and the remaining time" time="0.016158" classname="test" file="C:\Users\jamad\Downloads\online-exam-engine\online-exam-engine\tests\api\edge-cases.test.js"/>
+		<testcase name="ND-02: a stale (replayed) autosave cannot overwrite newer answers" time="0.042846" classname="test" file="C:\Users\jamad\Downloads\online-exam-engine\online-exam-engine\tests\api\edge-cases.test.js"/>
+		<testcase name="ND-03: out-of-order arrival (seq 3 before seq 2) keeps the newest; later seq still accepted" time="0.032431" classname="test" file="C:\Users\jamad\Downloads\online-exam-engine\online-exam-engine\tests\api\edge-cases.test.js"/>
+		<testcase name="ND-04: duplicate autosave with the same seq is harmless" time="0.030893" classname="test" file="C:\Users\jamad\Downloads\online-exam-engine\online-exam-engine\tests\api\edge-cases.test.js"/>
+		<testcase name="ND-05: submit retried after a lost response is idempotent (same score and timestamp)" time="0.029877" classname="test" file="C:\Users\jamad\Downloads\online-exam-engine\online-exam-engine\tests\api\edge-cases.test.js"/>
+		<testcase name="ND-06: a stale final snapshot loses to a newer autosave; a newer snapshot wins" time="0.064722" classname="test" file="C:\Users\jamad\Downloads\online-exam-engine\online-exam-engine\tests\api\edge-cases.test.js"/>
+		<testcase name="ND-07: malformed / truncated JSON gives 400, not 500, and leaves the attempt intact" time="0.078862" classname="test" file="C:\Users\jamad\Downloads\online-exam-engine\online-exam-engine\tests\api\edge-cases.test.js"/>
+		<testcase name="ND-08: connection dropped mid-request leaves state untouched and the server healthy" time="0.190185" classname="test" file="C:\Users\jamad\Downloads\online-exam-engine\online-exam-engine\tests\api\edge-cases.test.js"/>
+		<testcase name="ND-09: queued autosave replayed after reconnect, once the attempt is closed, gets 409 and changes nothing" time="0.046827" classname="test" file="C:\Users\jamad\Downloads\online-exam-engine\online-exam-engine\tests\api\edge-cases.test.js"/>
+		<testcase name="ND-10: a student reconnecting from a second device gets the same attempt, not a second timer" time="0.019628" classname="test" file="C:\Users\jamad\Downloads\online-exam-engine\online-exam-engine\tests\api\edge-cases.test.js"/>
+	</testsuite>
+	<testsuite name="Concurrent submissions" time="2.504566" disabled="0" errors="0" tests="7" failures="0" skipped="0" timestamp="2026-10-12T09:48:20.388Z" hostname="Somnath">
+		<testcase name="CS-01: 100 simultaneous submits of one attempt: exactly one finalizes, all see the same result" time="0.253984" classname="test" file="C:\Users\jamad\Downloads\online-exam-engine\online-exam-engine\tests\api\edge-cases.test.js"/>
+		<testcase name="CS-02: manual submits racing the sweeper at expiry produce exactly one finalization" time="0.086988" classname="test" file="C:\Users\jamad\Downloads\online-exam-engine\online-exam-engine\tests\api\edge-cases.test.js"/>
+		<testcase name="CS-03: 50 simultaneous starts for one student create exactly one attempt" time="0.058836" classname="test" file="C:\Users\jamad\Downloads\online-exam-engine\online-exam-engine\tests\api\edge-cases.test.js"/>
+		<testcase name="CS-04: autosave racing submit never leaves a torn state (graded answers == stored answers)" time="1.011211" classname="test" file="C:\Users\jamad\Downloads\online-exam-engine\online-exam-engine\tests\api\edge-cases.test.js"/>
+		<testcase name="CS-05: 200 students submit at once; every result is correct and isolated" time="0.476050" classname="test" file="C:\Users\jamad\Downloads\online-exam-engine\online-exam-engine\tests\api\edge-cases.test.js"/>
+		<testcase name="CS-06: attempt ids are capabilities: unknown ids are 404, nothing leaks between students" time="0.060881" classname="test" file="C:\Users\jamad\Downloads\online-exam-engine\online-exam-engine\tests\api\edge-cases.test.js"/>
+		<testcase name="CS-07: two server instances sharing one database cannot double-finalize (real compare-and-set race)" time="0.545675" classname="test" file="C:\Users\jamad\Downloads\online-exam-engine\online-exam-engine\tests\api\edge-cases.test.js"/>
+	</testsuite>
+	<testsuite name="Validation and hostile input" time="0.568612" disabled="0" errors="0" tests="7" failures="0" skipped="0" timestamp="2026-10-12T09:48:22.893Z" hostname="Somnath">
+		<testcase name="VA-01: invalid or hostile student ids are rejected (incl. SQL injection and path traversal)" time="0.276765" classname="test" file="C:\Users\jamad\Downloads\online-exam-engine\online-exam-engine\tests\api\edge-cases.test.js"/>
+		<testcase name="VA-02: unknown exam is 404" time="0.004225" classname="test" file="C:\Users\jamad\Downloads\online-exam-engine\online-exam-engine\tests\api\edge-cases.test.js"/>
+		<testcase name="VA-03: unknown question ids and junk value types are dropped, not stored" time="0.028627" classname="test" file="C:\Users\jamad\Downloads\online-exam-engine\online-exam-engine\tests\api\edge-cases.test.js"/>
+		<testcase name="VA-04: oversized body is refused with 413" time="0.026658" classname="test" file="C:\Users\jamad\Downloads\online-exam-engine\online-exam-engine\tests\api\edge-cases.test.js"/>
+		<testcase name="VA-05: invalid autosave payloads give 400" time="0.082572" classname="test" file="C:\Users\jamad\Downloads\online-exam-engine\online-exam-engine\tests\api\edge-cases.test.js"/>
+		<testcase name="VA-06: admin exam creation validates input and enforces the token when configured" time="0.126141" classname="test" file="C:\Users\jamad\Downloads\online-exam-engine\online-exam-engine\tests\api\edge-cases.test.js"/>
+		<testcase name="VA-07: a failed exam insert rolls back completely (no half-created exam)" time="0.016136" classname="test" file="C:\Users\jamad\Downloads\online-exam-engine\online-exam-engine\tests\api\edge-cases.test.js"/>
+	</testsuite>
+	<testsuite name="Real clock" time="1.429531" disabled="0" errors="0" tests="1" failures="0" skipped="0" timestamp="2026-10-12T09:48:23.453Z" hostname="Somnath">
+		<testcase name="RT-01: a short exam is auto-submitted by the background sweeper with no client activity" time="1.429021" classname="test" file="C:\Users\jamad\Downloads\online-exam-engine\online-exam-engine\tests\api\edge-cases.test.js"/>
+	</testsuite>
+	<testcase name="GR-01: single choice, exact match only" time="0.003251" classname="test" file="C:\Users\jamad\Downloads\online-exam-engine\online-exam-engine\tests\api\grader.test.js"/>
+	<testcase name="GR-02: multi select is all-or-nothing, order and duplicates irrelevant" time="0.000734" classname="test" file="C:\Users\jamad\Downloads\online-exam-engine\online-exam-engine\tests\api\grader.test.js"/>
+	<testcase name="GR-03: numeric tolerance boundaries" time="0.000528" classname="test" file="C:\Users\jamad\Downloads\online-exam-engine\online-exam-engine\tests\api\grader.test.js"/>
+	<testcase name="GR-04: malformed, hostile and missing input scores 0 and never throws" time="0.001153" classname="test" file="C:\Users\jamad\Downloads\online-exam-engine\online-exam-engine\tests\api\grader.test.js"/>
+	<testcase name="GR-05: attempt total, percentage rounding and breakdown" time="0.004408" classname="test" file="C:\Users\jamad\Downloads\online-exam-engine\online-exam-engine\tests\api\grader.test.js"/>
+	<testcase name="GR-06: empty answers, null answers and zero-question exam" time="0.000612" classname="test" file="C:\Users\jamad\Downloads\online-exam-engine\online-exam-engine\tests\api\grader.test.js"/>
+	<!-- tests 43 -->
+	<!-- suites 5 -->
+	<!-- pass 43 -->
+	<!-- fail 0 -->
+	<!-- cancelled 0 -->
+	<!-- skipped 0 -->
+	<!-- todo 0 -->
+	<!-- duration_ms 5954.5349 -->
+</testsuites>

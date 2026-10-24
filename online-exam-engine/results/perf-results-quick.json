@@ -1,0 +1,375 @@
+{
+  "startedAt": "2026-10-12T06:50:55.269Z",
+  "node": "v24.19.0",
+  "cores": 16,
+  "slo": {
+    "maxErrorRate": 0,
+    "correctness": 1,
+    "exactlyOnce": true,
+    "submitP95Ms": 1000,
+    "submitP99Ms": 2000,
+    "cliffResultP95Ms": 1500,
+    "sweepStallMs": 250,
+    "sweepCompleteMs": 5000,
+    "soakAutosaveP95Ms": 250
+  },
+  "scenarios": [
+    {
+      "scenario": "SPIKE-50",
+      "students": 50,
+      "startStormMs": {
+        "n": 50,
+        "min": 15.8,
+        "p50": 23.7,
+        "p90": 30.4,
+        "p95": 31.3,
+        "p99": 32.1,
+        "max": 32.1,
+        "mean": 24.2
+      },
+      "submitMs": {
+        "n": 50,
+        "min": 8.5,
+        "p50": 24.2,
+        "p90": 31.8,
+        "p95": 33,
+        "p99": 33.6,
+        "max": 33.6,
+        "mean": 23.2
+      },
+      "wallMs": 36,
+      "submitsPerSec": 1371,
+      "errors": 0,
+      "correct": 50,
+      "winners": 50,
+      "db": {
+        "total": 50,
+        "open": 0,
+        "finalized": 50,
+        "expectedTotal": 50
+      },
+      "serverCpuPct": 0,
+      "serverRssMb": 0,
+      "serverPeakRssMb": 0
+    },
+    {
+      "scenario": "SPIKE-100",
+      "students": 100,
+      "startStormMs": {
+        "n": 100,
+        "min": 25.1,
+        "p50": 38.3,
+        "p90": 51.4,
+        "p95": 53,
+        "p99": 54,
+        "max": 54.4,
+        "mean": 38.8
+      },
+      "submitMs": {
+        "n": 100,
+        "min": 7.7,
+        "p50": 38.7,
+        "p90": 56.2,
+        "p95": 57.8,
+        "p99": 59.5,
+        "max": 59.7,
+        "mean": 36.5
+      },
+      "wallMs": 64,
+      "submitsPerSec": 1572,
+      "errors": 0,
+      "correct": 100,
+      "winners": 100,
+      "db": {
+        "total": 100,
+        "open": 0,
+        "finalized": 100,
+        "expectedTotal": 100
+      },
+      "serverCpuPct": 0,
+      "serverRssMb": 0,
+      "serverPeakRssMb": 0
+    },
+    {
+      "scenario": "DUP-100",
+      "students": 100,
+      "requests": 300,
+      "submitMs": {
+        "n": 300,
+        "min": 52.1,
+        "p50": 69.6,
+        "p90": 72.5,
+        "p95": 75,
+        "p99": 76.5,
+        "max": 76.6,
+        "mean": 65.7
+      },
+      "wallMs": 95,
+      "exactlyOne": 100,
+      "consistent": 100,
+      "db": {
+        "total": 100,
+        "open": 0,
+        "finalized": 100,
+        "expectedTotal": 100
+      },
+      "serverCpuPct": 0,
+      "serverRssMb": 0,
+      "serverPeakRssMb": 0
+    },
+    {
+      "scenario": "CLIFF-100",
+      "students": 100,
+      "deadlineSpreadMs": 19,
+      "deadlineToResultMs": {
+        "n": 100,
+        "min": 18,
+        "p50": 82,
+        "p90": 120,
+        "p95": 123,
+        "p99": 128,
+        "max": 132,
+        "mean": 80
+      },
+      "lateBeyondGrace": 0,
+      "correct": 100,
+      "db": {
+        "total": 100,
+        "open": 0,
+        "finalized": 100,
+        "expectedTotal": 100
+      },
+      "serverCpuPct": 0,
+      "serverRssMb": 0,
+      "serverPeakRssMb": 0
+    },
+    {
+      "scenario": "SWEEP-100",
+      "students": 100,
+      "completeAfterGraceMs": 325,
+      "healthProbeMs": {
+        "n": 117,
+        "min": 0.6,
+        "p50": 1.6,
+        "p90": 2.1,
+        "p95": 2.2,
+        "p99": 2.6,
+        "max": 12.7,
+        "mean": 1.7
+      },
+      "correct": 100,
+      "db": {
+        "total": 100,
+        "open": 0,
+        "finalized": 100,
+        "expectedTotal": 100
+      },
+      "serverCpuPct": 0,
+      "serverRssMb": 0,
+      "serverPeakRssMb": 0
+    },
+    {
+      "scenario": "SOAK-50x8s",
+      "students": 50,
+      "durationSec": 8,
+      "requests": 447,
+      "reqPerSec": 49,
+      "autosaveMs": {
+        "n": 397,
+        "min": 1,
+        "p50": 1.9,
+        "p90": 3,
+        "p95": 3.5,
+        "p99": 5.4,
+        "max": 12.7,
+        "mean": 2.1
+      },
+      "correct": 50,
+      "serverCpuPct": 0,
+      "serverRssMb": 0,
+      "serverPeakRssMb": 0
+    }
+  ],
+  "serverLogTail": [
+    "exam-engine listening on http://localhost:3300 (db=C:\\Users\\jamad\\Downloads\\online-exam-engine\\online-exam-engine\\.tmp\\perf.db, grace=2000ms)",
+    ""
+  ],
+  "verdicts": [
+    {
+      "scenario": "SPIKE-50",
+      "name": "no failed requests",
+      "pass": true,
+      "detail": "0 errors, statuses {\"200\":50}"
+    },
+    {
+      "scenario": "SPIKE-50",
+      "name": "every result correct",
+      "pass": true,
+      "detail": "50/50"
+    },
+    {
+      "scenario": "SPIKE-50",
+      "name": "exactly one finalization per attempt",
+      "pass": true,
+      "detail": "winners=50, db finalized=50/50, still open=0"
+    },
+    {
+      "scenario": "SPIKE-50",
+      "name": "admin aggregate matches ground truth",
+      "pass": true,
+      "detail": "avg 1.3 vs 1.3"
+    },
+    {
+      "scenario": "SPIKE-50",
+      "name": "submit p95 <= 1000 ms",
+      "pass": true,
+      "detail": "33 ms"
+    },
+    {
+      "scenario": "SPIKE-50",
+      "name": "submit p99 <= 2000 ms",
+      "pass": true,
+      "detail": "33.6 ms"
+    },
+    {
+      "scenario": "SPIKE-100",
+      "name": "no failed requests",
+      "pass": true,
+      "detail": "0 errors, statuses {\"200\":100}"
+    },
+    {
+      "scenario": "SPIKE-100",
+      "name": "every result correct",
+      "pass": true,
+      "detail": "100/100"
+    },
+    {
+      "scenario": "SPIKE-100",
+      "name": "exactly one finalization per attempt",
+      "pass": true,
+      "detail": "winners=100, db finalized=100/100, still open=0"
+    },
+    {
+      "scenario": "SPIKE-100",
+      "name": "admin aggregate matches ground truth",
+      "pass": true,
+      "detail": "avg 1.29 vs 1.29"
+    },
+    {
+      "scenario": "SPIKE-100",
+      "name": "submit p95 <= 1000 ms",
+      "pass": true,
+      "detail": "57.8 ms"
+    },
+    {
+      "scenario": "SPIKE-100",
+      "name": "submit p99 <= 2000 ms",
+      "pass": true,
+      "detail": "59.5 ms"
+    },
+    {
+      "scenario": "DUP-100",
+      "name": "no failed requests",
+      "pass": true,
+      "detail": "0 errors, {\"200\":300}"
+    },
+    {
+      "scenario": "DUP-100",
+      "name": "exactly one winner per student",
+      "pass": true,
+      "detail": "100/100"
+    },
+    {
+      "scenario": "DUP-100",
+      "name": "all 3 responses agree and are correct",
+      "pass": true,
+      "detail": "100/100"
+    },
+    {
+      "scenario": "DUP-100",
+      "name": "database has exactly N finalized attempts",
+      "pass": true,
+      "detail": "{\"total\":100,\"open\":0,\"finalized\":100,\"expectedTotal\":100}"
+    },
+    {
+      "scenario": "DUP-100",
+      "name": "submit p95 <= 1000 ms",
+      "pass": true,
+      "detail": "75 ms"
+    },
+    {
+      "scenario": "CLIFF-100",
+      "name": "no failed requests",
+      "pass": true,
+      "detail": "{\"200\":100}"
+    },
+    {
+      "scenario": "CLIFF-100",
+      "name": "every result correct (autosave == final answers)",
+      "pass": true,
+      "detail": "100/100"
+    },
+    {
+      "scenario": "CLIFF-100",
+      "name": "every attempt finalized exactly once",
+      "pass": true,
+      "detail": "{\"total\":100,\"open\":0,\"finalized\":100,\"expectedTotal\":100}"
+    },
+    {
+      "scenario": "CLIFF-100",
+      "name": "deadline -> result p95 <= 1500 ms",
+      "pass": true,
+      "detail": "123 ms"
+    },
+    {
+      "scenario": "CLIFF-100",
+      "name": "no submission fell outside the grace window",
+      "pass": true,
+      "detail": "0 late"
+    },
+    {
+      "scenario": "SWEEP-100",
+      "name": "all 100 attempts closed within 5000 ms of the grace window ending",
+      "pass": true,
+      "detail": "325 ms"
+    },
+    {
+      "scenario": "SWEEP-100",
+      "name": "every auto-submitted score correct",
+      "pass": true,
+      "detail": "100/100"
+    },
+    {
+      "scenario": "SWEEP-100",
+      "name": "no attempt left open",
+      "pass": true,
+      "detail": "{\"total\":100,\"open\":0,\"finalized\":100,\"expectedTotal\":100}"
+    },
+    {
+      "scenario": "SWEEP-100",
+      "name": "longest stall seen by other users <= 250 ms",
+      "pass": true,
+      "detail": "12.7 ms"
+    },
+    {
+      "scenario": "SOAK-50x8s",
+      "name": "no failed requests",
+      "pass": true,
+      "detail": "0 of 447"
+    },
+    {
+      "scenario": "SOAK-50x8s",
+      "name": "every result correct",
+      "pass": true,
+      "detail": "50/50"
+    },
+    {
+      "scenario": "SOAK-50x8s",
+      "name": "autosave p95 <= 250 ms",
+      "pass": true,
+      "detail": "3.5 ms"
+    }
+  ],
+  "passed": 29,
+  "failed": 0
+}

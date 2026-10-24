@@ -1,0 +1,524 @@
+{
+  "startedAt": "2026-10-12T09:47:26.563Z",
+  "node": "v24.19.0",
+  "cores": 16,
+  "slo": {
+    "maxErrorRate": 0,
+    "correctness": 1,
+    "exactlyOnce": true,
+    "submitP95Ms": 1000,
+    "submitP99Ms": 2000,
+    "cliffResultP95Ms": 1500,
+    "sweepStallMs": 250,
+    "sweepCompleteMs": 5000,
+    "soakAutosaveP95Ms": 250
+  },
+  "scenarios": [
+    {
+      "scenario": "SPIKE-100",
+      "students": 100,
+      "startStormMs": {
+        "n": 100,
+        "min": 37,
+        "p50": 58.2,
+        "p90": 75.7,
+        "p95": 77.4,
+        "p99": 78.7,
+        "max": 79.1,
+        "mean": 58.1
+      },
+      "submitMs": {
+        "n": 100,
+        "min": 10.3,
+        "p50": 44.5,
+        "p90": 67.9,
+        "p95": 69.8,
+        "p99": 71.1,
+        "max": 71.5,
+        "mean": 43.7
+      },
+      "wallMs": 76,
+      "submitsPerSec": 1311,
+      "errors": 0,
+      "correct": 100,
+      "winners": 100,
+      "db": {
+        "total": 100,
+        "open": 0,
+        "finalized": 100,
+        "expectedTotal": 100
+      },
+      "serverCpuPct": 0,
+      "serverRssMb": 0,
+      "serverPeakRssMb": 0
+    },
+    {
+      "scenario": "SPIKE-250",
+      "students": 250,
+      "startStormMs": {
+        "n": 250,
+        "min": 89,
+        "p50": 127.6,
+        "p90": 159.9,
+        "p95": 172.4,
+        "p99": 176,
+        "max": 176.8,
+        "mean": 128.4
+      },
+      "submitMs": {
+        "n": 250,
+        "min": 22.3,
+        "p50": 73.7,
+        "p90": 103.5,
+        "p95": 106.5,
+        "p99": 108.8,
+        "max": 109.3,
+        "mean": 65.5
+      },
+      "wallMs": 120,
+      "submitsPerSec": 2087,
+      "errors": 0,
+      "correct": 250,
+      "winners": 250,
+      "db": {
+        "total": 250,
+        "open": 0,
+        "finalized": 250,
+        "expectedTotal": 250
+      },
+      "serverCpuPct": 0,
+      "serverRssMb": 0,
+      "serverPeakRssMb": 0
+    },
+    {
+      "scenario": "SPIKE-500",
+      "students": 500,
+      "startStormMs": {
+        "n": 500,
+        "min": 149.1,
+        "p50": 195.2,
+        "p90": 277.8,
+        "p95": 284.9,
+        "p99": 289.9,
+        "max": 290.8,
+        "mean": 211.3
+      },
+      "submitMs": {
+        "n": 500,
+        "min": 27,
+        "p50": 115.7,
+        "p90": 179.1,
+        "p95": 197.1,
+        "p99": 202.9,
+        "max": 204.2,
+        "mean": 111.9
+      },
+      "wallMs": 218,
+      "submitsPerSec": 2294,
+      "errors": 0,
+      "correct": 500,
+      "winners": 500,
+      "db": {
+        "total": 500,
+        "open": 0,
+        "finalized": 500,
+        "expectedTotal": 500
+      },
+      "serverCpuPct": 0,
+      "serverRssMb": 0,
+      "serverPeakRssMb": 0
+    },
+    {
+      "scenario": "SPIKE-1000",
+      "students": 1000,
+      "startStormMs": {
+        "n": 1000,
+        "min": 279.2,
+        "p50": 357,
+        "p90": 459.8,
+        "p95": 473.2,
+        "p99": 497.7,
+        "max": 501.7,
+        "mean": 364.2
+      },
+      "submitMs": {
+        "n": 1000,
+        "min": 57.9,
+        "p50": 215.5,
+        "p90": 344.7,
+        "p95": 355.8,
+        "p99": 364,
+        "max": 365.8,
+        "mean": 212.1
+      },
+      "wallMs": 392,
+      "submitsPerSec": 2553,
+      "errors": 0,
+      "correct": 1000,
+      "winners": 1000,
+      "db": {
+        "total": 1000,
+        "open": 0,
+        "finalized": 1000,
+        "expectedTotal": 1000
+      },
+      "serverCpuPct": 0,
+      "serverRssMb": 0,
+      "serverPeakRssMb": 0
+    },
+    {
+      "scenario": "DUP-500",
+      "students": 500,
+      "requests": 1500,
+      "submitMs": {
+        "n": 1500,
+        "min": 295.8,
+        "p50": 356,
+        "p90": 378,
+        "p95": 383.3,
+        "p99": 387.1,
+        "max": 388.4,
+        "mean": 344
+      },
+      "wallMs": 430,
+      "exactlyOne": 500,
+      "consistent": 500,
+      "db": {
+        "total": 500,
+        "open": 0,
+        "finalized": 500,
+        "expectedTotal": 500
+      },
+      "serverCpuPct": 0,
+      "serverRssMb": 0,
+      "serverPeakRssMb": 0
+    },
+    {
+      "scenario": "CLIFF-500",
+      "students": 500,
+      "deadlineSpreadMs": 157,
+      "deadlineToResultMs": {
+        "n": 500,
+        "min": 30,
+        "p50": 98,
+        "p90": 143,
+        "p95": 152,
+        "p99": 162,
+        "max": 164,
+        "mean": 97.5
+      },
+      "lateBeyondGrace": 0,
+      "correct": 500,
+      "db": {
+        "total": 500,
+        "open": 0,
+        "finalized": 500,
+        "expectedTotal": 500
+      },
+      "serverCpuPct": 0,
+      "serverRssMb": 0,
+      "serverPeakRssMb": 0
+    },
+    {
+      "scenario": "SWEEP-1000",
+      "students": 1000,
+      "completeAfterGraceMs": 685,
+      "healthProbeMs": {
+        "n": 147,
+        "min": 0.7,
+        "p50": 1.4,
+        "p90": 2.3,
+        "p95": 4.2,
+        "p99": 33.3,
+        "max": 75.6,
+        "mean": 2.4
+      },
+      "correct": 1000,
+      "db": {
+        "total": 1000,
+        "open": 0,
+        "finalized": 1000,
+        "expectedTotal": 1000
+      },
+      "serverCpuPct": 0,
+      "serverRssMb": 0,
+      "serverPeakRssMb": 0
+    },
+    {
+      "scenario": "SOAK-300x30s",
+      "students": 300,
+      "durationSec": 30,
+      "requests": 9219,
+      "reqPerSec": 296,
+      "autosaveMs": {
+        "n": 8919,
+        "min": 0.3,
+        "p50": 1.8,
+        "p90": 3.3,
+        "p95": 4,
+        "p99": 7.8,
+        "max": 138.7,
+        "mean": 2.4
+      },
+      "correct": 300,
+      "serverCpuPct": 0,
+      "serverRssMb": 0,
+      "serverPeakRssMb": 0
+    }
+  ],
+  "serverLogTail": [
+    "[auth] Default admin created: admin / admin123",
+    "exam-engine listening on http://localhost:3300 (db=C:\\Users\\jamad\\Downloads\\online-exam-engine\\online-exam-engine\\.tmp\\perf.db, grace=2000ms)",
+    ""
+  ],
+  "verdicts": [
+    {
+      "scenario": "SPIKE-100",
+      "name": "no failed requests",
+      "pass": true,
+      "detail": "0 errors, statuses {\"200\":100}"
+    },
+    {
+      "scenario": "SPIKE-100",
+      "name": "every result correct",
+      "pass": true,
+      "detail": "100/100"
+    },
+    {
+      "scenario": "SPIKE-100",
+      "name": "exactly one finalization per attempt",
+      "pass": true,
+      "detail": "winners=100, db finalized=100/100, still open=0"
+    },
+    {
+      "scenario": "SPIKE-100",
+      "name": "admin aggregate matches ground truth",
+      "pass": true,
+      "detail": "avg 1.29 vs 1.29"
+    },
+    {
+      "scenario": "SPIKE-100",
+      "name": "submit p95 <= 1000 ms",
+      "pass": true,
+      "detail": "69.8 ms"
+    },
+    {
+      "scenario": "SPIKE-100",
+      "name": "submit p99 <= 2000 ms",
+      "pass": true,
+      "detail": "71.1 ms"
+    },
+    {
+      "scenario": "SPIKE-250",
+      "name": "no failed requests",
+      "pass": true,
+      "detail": "0 errors, statuses {\"200\":250}"
+    },
+    {
+      "scenario": "SPIKE-250",
+      "name": "every result correct",
+      "pass": true,
+      "detail": "250/250"
+    },
+    {
+      "scenario": "SPIKE-250",
+      "name": "exactly one finalization per attempt",
+      "pass": true,
+      "detail": "winners=250, db finalized=250/250, still open=0"
+    },
+    {
+      "scenario": "SPIKE-250",
+      "name": "admin aggregate matches ground truth",
+      "pass": true,
+      "detail": "avg 1.272 vs 1.272"
+    },
+    {
+      "scenario": "SPIKE-250",
+      "name": "submit p95 <= 1000 ms",
+      "pass": true,
+      "detail": "106.5 ms"
+    },
+    {
+      "scenario": "SPIKE-250",
+      "name": "submit p99 <= 2000 ms",
+      "pass": true,
+      "detail": "108.8 ms"
+    },
+    {
+      "scenario": "SPIKE-500",
+      "name": "no failed requests",
+      "pass": true,
+      "detail": "0 errors, statuses {\"200\":500}"
+    },
+    {
+      "scenario": "SPIKE-500",
+      "name": "every result correct",
+      "pass": true,
+      "detail": "500/500"
+    },
+    {
+      "scenario": "SPIKE-500",
+      "name": "exactly one finalization per attempt",
+      "pass": true,
+      "detail": "winners=500, db finalized=500/500, still open=0"
+    },
+    {
+      "scenario": "SPIKE-500",
+      "name": "admin aggregate matches ground truth",
+      "pass": true,
+      "detail": "avg 1.27 vs 1.27"
+    },
+    {
+      "scenario": "SPIKE-500",
+      "name": "submit p95 <= 1000 ms",
+      "pass": true,
+      "detail": "197.1 ms"
+    },
+    {
+      "scenario": "SPIKE-500",
+      "name": "submit p99 <= 2000 ms",
+      "pass": true,
+      "detail": "202.9 ms"
+    },
+    {
+      "scenario": "SPIKE-1000",
+      "name": "no failed requests",
+      "pass": true,
+      "detail": "0 errors, statuses {\"200\":1000}"
+    },
+    {
+      "scenario": "SPIKE-1000",
+      "name": "every result correct",
+      "pass": true,
+      "detail": "1000/1000"
+    },
+    {
+      "scenario": "SPIKE-1000",
+      "name": "exactly one finalization per attempt",
+      "pass": true,
+      "detail": "winners=1000, db finalized=1000/1000, still open=0"
+    },
+    {
+      "scenario": "SPIKE-1000",
+      "name": "admin aggregate matches ground truth",
+      "pass": true,
+      "detail": "avg 1.268 vs 1.268"
+    },
+    {
+      "scenario": "SPIKE-1000",
+      "name": "submit p95 <= 1000 ms",
+      "pass": true,
+      "detail": "355.8 ms"
+    },
+    {
+      "scenario": "SPIKE-1000",
+      "name": "submit p99 <= 2000 ms",
+      "pass": true,
+      "detail": "364 ms"
+    },
+    {
+      "scenario": "DUP-500",
+      "name": "no failed requests",
+      "pass": true,
+      "detail": "0 errors, {\"200\":1500}"
+    },
+    {
+      "scenario": "DUP-500",
+      "name": "exactly one winner per student",
+      "pass": true,
+      "detail": "500/500"
+    },
+    {
+      "scenario": "DUP-500",
+      "name": "all 3 responses agree and are correct",
+      "pass": true,
+      "detail": "500/500"
+    },
+    {
+      "scenario": "DUP-500",
+      "name": "database has exactly N finalized attempts",
+      "pass": true,
+      "detail": "{\"total\":500,\"open\":0,\"finalized\":500,\"expectedTotal\":500}"
+    },
+    {
+      "scenario": "DUP-500",
+      "name": "submit p95 <= 1000 ms",
+      "pass": true,
+      "detail": "383.3 ms"
+    },
+    {
+      "scenario": "CLIFF-500",
+      "name": "no failed requests",
+      "pass": true,
+      "detail": "{\"200\":500}"
+    },
+    {
+      "scenario": "CLIFF-500",
+      "name": "every result correct (autosave == final answers)",
+      "pass": true,
+      "detail": "500/500"
+    },
+    {
+      "scenario": "CLIFF-500",
+      "name": "every attempt finalized exactly once",
+      "pass": true,
+      "detail": "{\"total\":500,\"open\":0,\"finalized\":500,\"expectedTotal\":500}"
+    },
+    {
+      "scenario": "CLIFF-500",
+      "name": "deadline -> result p95 <= 1500 ms",
+      "pass": true,
+      "detail": "152 ms"
+    },
+    {
+      "scenario": "CLIFF-500",
+      "name": "no submission fell outside the grace window",
+      "pass": true,
+      "detail": "0 late"
+    },
+    {
+      "scenario": "SWEEP-1000",
+      "name": "all 1000 attempts closed within 5000 ms of the grace window ending",
+      "pass": true,
+      "detail": "685 ms"
+    },
+    {
+      "scenario": "SWEEP-1000",
+      "name": "every auto-submitted score correct",
+      "pass": true,
+      "detail": "1000/1000"
+    },
+    {
+      "scenario": "SWEEP-1000",
+      "name": "no attempt left open",
+      "pass": true,
+      "detail": "{\"total\":1000,\"open\":0,\"finalized\":1000,\"expectedTotal\":1000}"
+    },
+    {
+      "scenario": "SWEEP-1000",
+      "name": "longest stall seen by other users <= 250 ms",
+      "pass": true,
+      "detail": "75.6 ms"
+    },
+    {
+      "scenario": "SOAK-300x30s",
+      "name": "no failed requests",
+      "pass": true,
+      "detail": "0 of 9219"
+    },
+    {
+      "scenario": "SOAK-300x30s",
+      "name": "every result correct",
+      "pass": true,
+      "detail": "300/300"
+    },
+    {
+      "scenario": "SOAK-300x30s",
+      "name": "autosave p95 <= 250 ms",
+      "pass": true,
+      "detail": "4 ms"
+    }
+  ],
+  "passed": 41,
+  "failed": 0
+}
